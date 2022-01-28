@@ -1,7 +1,6 @@
 .body {
     background-color: rgb(184, 179, 179);
     margin: -20px;
-    /* color: white; */
     padding-top: 20px;
 }
 
@@ -62,35 +61,14 @@
     z-index: 0;
 }
 
-/*======== COLORS ===========*/
-.card[data-color="blue"] {
-    background: #b8d8d8;
+.card-legale {
+    background-color: #b8d8d8;
 }
 
-.card[data-color="blue"] .description {
-    color: #506568;
+.card-generale {
+    background-color: #ff8f5e;
 }
 
-.card[data-color="brown"] {
-    background: #d6c1ab;
-}
-
-.card[data-color="brown"] .description {
-    color: #75442e;
-}
-
-.card[data-color="brown"] .category {
-    color: #a47e65;
-}
-
-.card[data-color="orange"] {
-    background: #ff8f5e;
-}
-
-.card[data-color="orange"] .description {
-    color: #772510;
-}
-
-.card[data-color="orange"] .category {
-    color: #e95e37;
+.card-operativa {
+    background-color: #a47e65;
 }
