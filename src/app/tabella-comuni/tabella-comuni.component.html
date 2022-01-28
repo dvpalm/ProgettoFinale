@@ -1,0 +1,194 @@
+<div class="body">
+  <div class="container-fluid">
+    <div class="row bottoni">
+      <div class="col-md-6 d-flex justify-content-center mb-3">
+        <button type="button" class="btn btn-primary" (click)="apriModalProvince(content2)">Aggiungi Provincia</button>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center mb-3">
+        <button type="button" class="btn btn-primary" (click)="apriModalComuni(content)">Aggiungi Comune</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <table class="table table-warning table-responsive col-md-5 rotonda">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Sigla</th>
+            <th scope="col" class="pl-4">Opzioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of province; index as i">
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.id}}</td>
+            <td>{{item.nome}}</td>
+            <td>{{item.sigla}}</td>
+            <td>
+              <button type="button" data-toggle="tooltip" title="Modifica provincia"
+                (click)="apriModalModificaProvince(content4, item)" class="btn btn-warning btn-sm mx-2">
+                <fa-icon [icon]="faUserEdit"></fa-icon>
+              </button>
+              <button type="button" data-toggle="tooltip" title="Rimuovi provincia" (click)="rimuoviProvincia(item.id)"
+                class="btn btn-danger btn-sm mx-2">
+                <fa-icon [icon]="faUserTimes"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col"></div>
+      <table class="table table-info table-responsive col-md-5 rotonda">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Comune</th>
+            <th scope="col" class="pl-4">Opzioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of comuni; index as i">
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.id}}</td>
+            <td>{{item.nome}}</td>
+            <td>
+              <button type="button" data-toggle="tooltip" title="Modifica comune"
+                (click)="apriModalModificaComuni(content3, item)" class="btn btn-warning btn-sm mx-2">
+                <fa-icon [icon]="faUserEdit"></fa-icon>
+              </button>
+              <button type="button" data-toggle="tooltip" title="Rimuovi comune" (click)="rimuoviComune(item.id)"
+                class="btn btn-danger btn-sm mx-2">
+                <fa-icon [icon]="faUserTimes"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal Add Provincia -->
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title-province">Aggiungi Provincia</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class=" my-3">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="nuovaProvincia.nome" class="form-control" placeholder="Nome provincia...">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="nuovaProvincia.sigla" class="form-control" placeholder="Sigla provincia...">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="aggiungiProvincia()">Modifica</button>
+  </div>
+</ng-template>
+
+<!-- Modal Mod Provincia -->
+<ng-template #content4 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title-mod-province">Modifica Provincia</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class=" my-3">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="provinciaModificata.nome" class="form-control" placeholder="Nome provincia...">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="provinciaModificata.sigla" class="form-control"
+          placeholder="Sigla provincia...">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modificaProvincia()">Modifica</button>
+  </div>
+</ng-template>
+
+
+<!-- Modal Add Comune -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Aggiungi comune</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class=" my-3">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="nuovoComune.nome" class="form-control" placeholder="Nome del comune...">
+      </div>
+      <select id="tipoCliente" class="p-2" style="width: 100%" name="tipo" [(ngModel)]="nuovoComune.provincia"
+        [ngModelOptions]="{standalone: true}">
+        <option [ngValue]="item" *ngFor="let item of province">
+          {{item.nome}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="aggiungiComune()">Modifica</button>
+  </div>
+</ng-template>
+
+<!-- Modal Mod Comune -->
+<ng-template #content3 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title-mod-comuni">Modifica comune</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class=" my-3">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="comuneModificato.nome" class="form-control" placeholder="Nome comune...">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modificaComune()">Modifica</button>
+  </div>
+</ng-template>

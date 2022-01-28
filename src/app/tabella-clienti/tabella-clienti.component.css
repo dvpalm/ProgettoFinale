@@ -1,0 +1,35 @@
+.body {
+    background-color: rgb(39, 38, 38);
+    color: white;
+}
+
+table th {
+    color: #FFB74D;
+    border-bottom: 2px solid black;
+}
+
+table {
+    background: linear-gradient(to right, #49718a, #34587c, #3c71a5);
+    padding: 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.05),0 0 0 10px rgba(0,0,0,0.05);
+    padding: 20px 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-header {
+    border-bottom: 1px solid black;
+}
+
+.modal-footer {
+    border-top: 1px solid black;   
+}
+
+.modal-body,
+.modal-header,
+.modal-footer,
+.modalebreadcrumb {
+    background-color: #FFB74D;
+    color: white;
+}

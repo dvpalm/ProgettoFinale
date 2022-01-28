@@ -1,0 +1,60 @@
+main {
+    background-color: #F7F8FB;
+    color: black;
+}
+
+.slider {
+    margin-top: -20px;
+}
+
+.carousel-inner {
+    height: 550px;
+}
+
+.scritteslider {
+    margin-bottom: 400px;
+}
+
+.scritteslider h1 { 
+    font-size: 60px;
+    color: #F59F07;
+}
+
+.card {
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    margin: 0px 10px;
+    padding: 100px;
+    color: black;
+}
+
+.card h4 {
+    text-align: center;
+}
+
+.card-main-1 {
+    background-color: #5f32db;
+    background-image: url(../../assets/img/main1.png);
+   
+}
+
+.card-main-2 {
+    background-color: #FC2A68;
+    background-image: url(../../assets/img/main2.png);
+}
+
+.card-main-3 {
+    background-color: #26C1CE;
+    background-image: url(../../assets/img/main3.png);
+}
+
+.section-3 {
+    /* background-color: #d6c1ab; */
+    background-image: url(../../assets/img/assicuro.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}

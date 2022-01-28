@@ -1,0 +1,202 @@
+<div class="body">
+    <div class="container pb-4 pt-3">
+        <div class="col-md-12">
+            <div class="form-group">
+                <h1 class="text-center mb-3">Aggiungi un cliente</h1>
+                <button type="button" class="btn btn-dark form-control bg-success shadow animate__animated animate__zoomIn"
+                    (click)="aggiungiCliente()">Aggiungi</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 content-card animate__animated animate__rotateInDownLeft">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                        <div class="content">
+                            <h3 class="text-center text-warning">Indirizzo sede Legale</h3>
+                            <div class="form-group">
+                                <label for="vialegale">Via</label>
+                                <input type="text" [(ngModel)]="cliente.indirizzoSedeLegale.via" name="vialegale"
+                                    class="form-control" id="vialegale">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="civicolegale">Civico</label>
+                                <input type="number" [(ngModel)]="cliente.indirizzoSedeLegale.civico"
+                                    name="civicolegale" class="form-control" id="civicolegale">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="caplegale">Cap</label>
+                                <input type="number" [(ngModel)]="cliente.indirizzoSedeLegale.cap" name="caplegale"
+                                    class="form-control" id="caplegale">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="localitalegale">Località</label>
+                                <input type="text" [(ngModel)]="cliente.indirizzoSedeLegale.localita"
+                                    name="localitalegale" class="form-control" id="localitalegale">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sedelegale">Comune</label>
+                                <select id="sedelegale" class="p-2" style="width: 100%" name="sedelegale"
+                                    [(ngModel)]="cliente.indirizzoSedeLegale.comune"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option [ngValue]="item" *ngFor="let item of comuni">
+                                        {{item.nome}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="provincialegale">Provincia</label>
+                                <select id="provincialegale" class="p-2" style="width: 100%" name="provincialegale"
+                                    [(ngModel)]="cliente.indirizzoSedeLegale.comune.provincia"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option [ngValue]="item" *ngFor="let item of province">
+                                        {{item.nome}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card -->
+
+            <div class="col-md-4 col-sm-6 content-card animate__animated animate__zoomIn">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text" data-background="color" data-color="orange" data-radius="none">
+                        <div class="content">
+                            <h3 class="text-center text-primary">Info generali</h3>
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" [(ngModel)]="cliente.nomeContatto" name="nome" class="form-control"
+                                    id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="cognome">Cognome</label>
+                                <input type="text" [(ngModel)]="cliente.cognomeContatto" name="cognome"
+                                    class="form-control" id="cognome">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" [(ngModel)]="cliente.email" name="email" class="form-control"
+                                    id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailContatto">Email</label>
+                                <input type="email" [(ngModel)]="cliente.emailContatto" name="emailContatto"
+                                    class="form-control" id="emailContatto">
+                            </div>
+                            <div class="form-group">
+                                <label for="pec">PEC</label>
+                                <input type="email" [(ngModel)]="cliente.pec" name="pec" class="form-control" id="pec">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Telefono</label>
+                                <input type="tel" [(ngModel)]="cliente.telefono" name="telefono" class="form-control"
+                                    id="telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefonoContatto">Telefono Contatto</label>
+                                <input type="tel" [(ngModel)]="cliente.telefonoContatto" name="telefonoContatto"
+                                    class="form-control" id="telefonoContatto">
+                            </div>
+                            <div class="form-group">
+                                <label for="ragioneSociale">Ragione Sociale</label>
+                                <input type="text" [(ngModel)]="cliente.ragioneSociale" name="ragioneSociale"
+                                    class="form-control" id="ragioneSociale">
+                            </div>
+                            <div class="form-group">
+                                <label for="partitaIva">Partita Iva</label>
+                                <input type="number" [(ngModel)]="cliente.partitaIva" name="partitaIva"
+                                    class="form-control" id="partitaIva">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoCliente">Tipo Cliente</label>
+                                <select id="tipoCliente" class="p-2" style="width: 100%" name="tipo"
+                                    [(ngModel)]="cliente.tipoCliente" [ngModelOptions]="{standalone: true}">
+                                    <option [ngValue]="item" *ngFor="let item of tipoCliente">
+                                        {{item}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fatturato">Fatturato Annuale</label>
+                                <input type="number" [(ngModel)]="cliente.fatturatoAnnuale" name="fatturato"
+                                    class="form-control" id="fatturato">
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="dataInserimento">Data inserimento</label>
+                                <input type="text" [(ngModel)]="cliente.dataInserimento" name="dataInserimento"
+                                    class="form-control" id="dataInserimento">
+                            </div>
+                            <div class="form-group">
+                                <label for="dataUltimoContatto">Data ultimo contatto</label>
+                                <input type="text" [(ngModel)]="cliente.dataUltimoContatto" name="dataUltimoContatto"
+                                    class="form-control" id="dataUltimoContatto">
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card -->
+
+            <div class="col-md-4 col-sm-6 content-card animate__animated animate__rotateInDownRight">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
+                        <div class="content">
+                            <h3 class="text-center text-danger">Indirizzo sede Operativa</h3>
+
+                            <div class="form-group">
+                                <label for="via">Via</label>
+                                <input type="text" [(ngModel)]="cliente.indirizzoSedeOperativa.via" name="via"
+                                    class="form-control" id="via">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="civico">Civico</label>
+                                <input type="number" [(ngModel)]="cliente.indirizzoSedeOperativa.civico" name="civico"
+                                    class="form-control" id="civico">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cap">Cap</label>
+                                <input type="number" [(ngModel)]="cliente.indirizzoSedeOperativa.cap" name="cap"
+                                    class="form-control" id="cap">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="localita">Località</label>
+                                <input type="text" [(ngModel)]="cliente.indirizzoSedeOperativa.localita" name="localita"
+                                    class="form-control" id="localita">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sede">Comune</label>
+                                <select id="sede" class="p-2" style="width: 100%" name="sede"
+                                    [(ngModel)]="cliente.indirizzoSedeOperativa.comune"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option [ngValue]="item" *ngFor="let item of comuni">
+                                        {{item.nome}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="provincia">Provincia</label>
+                                <select id="provincia" class="p-2" style="width: 100%" name="provincia"
+                                    [(ngModel)]="cliente.indirizzoSedeOperativa.comune.provincia"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option [ngValue]="item" *ngFor="let item of province">
+                                        {{item.nome}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card -->
+
+        </div>
+    </div>
+</div>

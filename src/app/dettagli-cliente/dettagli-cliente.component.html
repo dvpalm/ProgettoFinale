@@ -1,0 +1,211 @@
+<div class="container">
+    <!-- Indice -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb si">
+            <li class="breadcrumb-item"><a  href="#" class="text-primary" [routerLink]="['/clienti']"
+                    routerLinkActive="router-link-active">Clienti</a></li>
+            <li class="breadcrumb-item active text-primary" aria-current="page">Dettaglio</li>
+            <li class="breadcrumb-item">
+                <span class="text-primary">{{cliente.nomeContatto}}</span>
+            </li>
+        </ol>
+    </nav>
+    <!-- Info cliente -->
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card card-nome">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="../../assets/img/cliente.png" alt="Admin" class="rounded-circle"
+                            width="150">
+                        <div class="mt-3">
+                            <h4>{{cliente.nomeContatto}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-fatture mt-3">
+                <h3 class="text-center text-white p-3">Fatture cliente</h3>
+                <div class="list-group">
+                    <a *ngFor="let item of fattura" (click)="dettagliFattura(item.id)" class="list-group-item list-group-item-action" aria-current="true">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">ID: {{item.id}}</h5>
+                        <small class="">{{item.anno}}</small>
+                      </div>
+                      <p class="mb-1">Importo: {{item.importo}}€</p>
+                      <h6 class="text-danger text-right">{{item.stato.nome}}</h6>
+                    </a>
+                  </div>
+            </div>
+        </div>
+
+        <!-- Dettagli cliente -->
+
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <h3 class="text-center text-primary p-3">Dettagli cliente</h3>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Ragione sociale</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{cliente.ragioneSociale}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Partita Iva</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{cliente.partitaIva}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Tipo cliente</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                           {{cliente.tipoCliente}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{cliente.email}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Pec</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{cliente.pec}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Telefono Privato</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{cliente.telefono}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Telefono Azienda</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{cliente.telefonoContatto}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Sede operativa</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <span class="text-primary">Via:</span> {{cliente.indirizzoSedeOperativa.via}} <span class="text-primary">Civico:</span> {{cliente.indirizzoSedeOperativa.civico}} <span class="text-primary">Cap:</span> {{cliente.indirizzoSedeOperativa.cap}}<br>
+                            <span class="text-primary">Località:</span> {{cliente.indirizzoSedeOperativa.localita}} <br>
+                            <span class="text-primary">Comune:</span> {{cliente.indirizzoSedeOperativa.comune.nome}}<br>
+                            <span class="text-primary">Provincia di:</span> {{cliente.indirizzoSedeOperativa.comune.provincia.nome}} ({{cliente.indirizzoSedeOperativa.comune.provincia.sigla}})
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Sede legale</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <span class="text-primary">Via:</span> {{cliente.indirizzoSedeLegale.via}} <span class="text-primary">Civico:</span> {{cliente.indirizzoSedeLegale.civico}} <span class="text-primary">Cap:</span> {{cliente.indirizzoSedeLegale.cap}}<br>
+                            <span class="text-primary">Località:</span> {{cliente.indirizzoSedeLegale.localita}} <br>
+                            <span class="text-primary">Comune:</span> {{cliente.indirizzoSedeLegale.comune.nome}}<br>
+                            <span class="text-primary">Provincia di:</span> {{cliente.indirizzoSedeLegale.comune.provincia.nome}} ({{cliente.indirizzoSedeLegale.comune.provincia.sigla}})
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Fatturato</h6>
+                        </div>
+                        <div class="col-sm-9 text-success">
+                            {{cliente.fatturatoAnnuale}}€
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Data ultimo inserimento & contatto</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{cliente.dataInserimento}}<br>
+                            {{cliente.dataUltimoContatto}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                        <button type="button" class="btn btn-primary" (click)="openModalAggiungiFattura(content)">Aggiungi fattura</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+<!-- Modal Add fattura -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Aggiungi fattura</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class=" my-3">
+        <div class="form-group">
+          <input type="number" [(ngModel)]="nuovaFattura.anno" class="form-control" placeholder="Anno...">
+        </div>
+        <div class="form-group">
+          <input type="number" [(ngModel)]="nuovaFattura.importo" class="form-control" placeholder="importo...">
+        </div>
+        <div class="form-group">
+            <input type="number" [(ngModel)]="nuovaFattura.numero" class="form-control" placeholder="numero...">
+          </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="nuovaFattura.data" class="form-control" placeholder="data...">
+        </div>
+        <div class="form-group">
+            <label for="statoFattura">Stato fattura</label>
+            <select id="statoFattura" class="p-2" style="width: 100%" name="statofattura" [(ngModel)]="nuovaFattura.stato" [ngModelOptions]="{standalone: true}">
+                <option [ngValue]="item" *ngFor="let item of statoFattura">
+                    {{item.nome}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cliente">Cliente</label>
+            <select id="cliente" class="p-2" style="width: 100%" name="cliente" [(ngModel)]="nuovaFattura.cliente" [ngModelOptions]="{standalone: true}">
+                <option [ngValue]="item" *ngFor="let item of clienti">
+                    {{item.nomeContatto}}
+                </option>
+            </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="aggiungiFattura()">Modifica</button>
+    </div>
+  </ng-template>

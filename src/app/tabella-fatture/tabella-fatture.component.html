@@ -1,0 +1,65 @@
+<div class="body">
+  <div class="container pt-4">
+
+    <!-- Filtro anno -->
+    <div class="input-group mb-3 filtroAnno">
+      <input type="number" class="form-control" placeholder="Anno..." [(ngModel)]="anno.anno"
+        aria-label="Filtra by anno" aria-describedby="button-addon1">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="getByAnno()">Filtra per
+          anno</button>
+      </div>
+    </div>
+
+    <!-- Filtro importo -->
+
+    <div class="input-group mb-3 filtroImporto">
+      <input type="number" class="form-control" placeholder="Da Euro..." [(ngModel)]="fatturatoDa.importo"
+        aria-label="Filtra by importo DA" aria-describedby="button-addon2">
+      <div class="input-group-prepend">
+        <span class="input-group-text">€</span>
+      </div>
+      <input type="number" class="form-control" placeholder="A Euro..." [(ngModel)]="fatturatoA.importo"
+        aria-label="Filtra by importo A" aria-describedby="button-addon2">
+      <div class="input-group-prepend">
+        <span class="input-group-text">€</span>
+      </div>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="getByImporto()">Filtra per
+          importo</button>
+      </div>
+    </div>
+
+    <!-- Filtro stato -->
+
+    <div class="col-md-12 m-3 text-center justify-content-around d-flex">
+        <button class="btn btn-outline-secondary" type="button" (click)="fatturePagate()">Mostra fatture pagate</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="fattureNonPagate()">Mostra fatture non pagate</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 content-card" *ngFor="let item of fatture; index as i">
+        <div class="card border-white">
+          <div class="card-body">
+            <h6 class="text-center text-warning">{{item.cliente.ragioneSociale}}</h6>
+            <hr>
+            <p>{{item.cliente.nomeContatto}} {{item.cliente.cognomeContatto}}</p>
+            <p>{{item.data}}</p>
+            <div class="row justify-content-around">
+              <p class="text-success">{{item.importo}} €</p>
+              <p class="text-warning">{{item.stato.nome}}</p>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center">
+              <button type="button" data-toggle="tooltip" title="Visualizza dettagli" (click)="dettagli(item)"
+                class="btn btn-primary btn-sm mx-3"><fa-icon [icon]="faEye"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

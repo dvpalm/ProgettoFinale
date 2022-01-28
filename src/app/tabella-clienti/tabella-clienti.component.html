@@ -1,0 +1,180 @@
+<div class="body">
+  <div class="container pt-4 pb-3">
+    <div class="row">
+
+      <div class="col-md-12 mb-3 px-4 justify-content-around align-items-center d-flex">
+        <div class="col-md-6">
+          <h1 class="mr-5">CLIENTI</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="input-group mb-3 cerca">
+            <input type="text" [(ngModel)]="filtroCerca.ragioneSociale" class="form-control"
+              placeholder="Filtra per ragione sociale..." aria-label="Filtra per ragione sociale..."
+              aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary right" type="button" (click)="filtroClienti()">CERCA</button>
+              <button type="button" class="btn btn-primary ml-5" (click)="aggiungiCliente()">Aggiungi Cliente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-dark table-responsive-md">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Cognome</th>
+          <th scope="col">Pec</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">R. Sociale</th>
+          <th scope="col" class="text-center">Opzioni</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of clienti; index as i">
+          <td scope="row">{{i+1}}</td>
+          <td>{{item.nomeContatto}}</td>
+          <td>{{item.cognomeContatto}}</td>
+          <td>{{item.pec}}</td>
+          <td>{{item.telefono}}</td>
+          <td>{{item.tipoCliente}}</td>
+          <td>{{item.ragioneSociale}}</td>
+          <td>
+
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" data-toggle="tooltip" title="Visualizza dettagli" (click)="dettagli(item)"
+                class="btn btn-success btn-sm">
+                <fa-icon [icon]="faEye"></fa-icon>
+              </button>
+              <button type="button" data-toggle="tooltip" title="Rimuovi utente" (click)="rimuoviCliente(item.id)"
+                class="btn btn-danger btn-sm mx-3">
+                <fa-icon [icon]="faUserTimes"></fa-icon>
+              </button>
+              <button type="button" data-toggle="tooltip" title="Modifica utente" (click)="open(content, item)"
+                class="btn btn-warning btn-sm">
+                <fa-icon [icon]="faUserEdit"></fa-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Edit -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title text-dark" id="modal-basic-title">Modifica Utente</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div aria-label="breadcrumb" class="main-breadcrumb col-12 modalebreadcrumb">
+    <ol class="breadcrumb modalebreadcrumb">
+      <li class="breadcrumb-item" (click)="modal.dismiss('Cross click')"><a href="javascript:void(0)">Clienti</a></li>
+      <li class="breadcrumb-item" aria-current="page">Modifica cliente</li>
+      <li class="breadcrumb-item active"><span class="text-primary">{{clienteModificato.nomeContatto}}
+          {{clienteModificato.cognomeContatto}}</span></li>
+    </ol>
+  </div>
+  <div class="modal-body">
+    <div class="my-3">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="clienteModificato.ragioneSociale" class="form-control"
+          placeholder="Ragione sociale...">
+      </div>
+      <div class="form-group">
+        <input type="number" [(ngModel)]="clienteModificato.partitaIva" class="form-control"
+          placeholder="Partita iva...">
+      </div>
+      <div class="form-group">
+        <select class="p-2" style="width: 100%" name="tipo" [(ngModel)]="clienteModificato.tipoCliente"
+          [ngModelOptions]="{standalone: true}">
+          <option [ngValue]="item" *ngFor="let item of tipoCliente">
+            {{item}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="clienteModificato.nomeContatto" class="form-control" placeholder="Nome...">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="clienteModificato.cognomeContatto" class="form-control"
+          placeholder="Cognome...">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="clienteModificato.pec" class="form-control" placeholder="Pec...">
+      </div>
+      <div class="form-group">
+        <input type="tel" [(ngModel)]="clienteModificato.telefonoContatto" class="form-control"
+          placeholder="Telefono contatto...">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="clienteModificato.emailContatto" class="form-control" placeholder="Email...">
+      </div>
+      <div class="form-group">
+        <input type="number" [(ngModel)]="clienteModificato.fatturatoAnnuale" class="form-control"
+          placeholder="Fatturato...">
+      </div>
+      <h3 class="text-center text-danger">Indirizzo sede Operativa</h3>
+
+      <div class="form-group">
+        <label for="via">Via</label>
+        <input type="text" [(ngModel)]="clienteModificato.indirizzoSedeOperativa.via" name="via" class="form-control"
+          id="via">
+      </div>
+
+      <div class="form-group">
+        <label for="civico">Civico</label>
+        <input type="number" [(ngModel)]="clienteModificato.indirizzoSedeOperativa.civico" name="civico"
+          class="form-control" id="civico">
+      </div>
+
+      <div class="form-group">
+        <label for="cap">Cap</label>
+        <input type="number" [(ngModel)]="clienteModificato.indirizzoSedeOperativa.cap" name="cap" class="form-control"
+          id="cap">
+      </div>
+
+      <div class="form-group">
+        <label for="localita">Località</label>
+        <input type="text" [(ngModel)]="clienteModificato.indirizzoSedeOperativa.localita" name="localita"
+          class="form-control" id="localita">
+      </div>
+    </div>
+    <h3 class="text-center text-danger">Indirizzo sede Legale</h3>
+    <div class="form-group">
+      <label for="vialegale">Via</label>
+      <input type="text" [(ngModel)]="clienteModificato.indirizzoSedeLegale.via" name="vialegale" class="form-control"
+        id="vialegale">
+    </div>
+
+    <div class="form-group">
+      <label for="civicolegale">Civico</label>
+      <input type="number" [(ngModel)]="clienteModificato.indirizzoSedeLegale.civico" name="civicolegale"
+        class="form-control" id="civicolegale">
+    </div>
+
+    <div class="form-group">
+      <label for="caplegale">Cap</label>
+      <input type="number" [(ngModel)]="clienteModificato.indirizzoSedeLegale.cap" name="caplegale" class="form-control"
+        id="caplegale">
+    </div>
+
+    <div class="form-group">
+      <label for="localitalegale">Località</label>
+      <input type="text" [(ngModel)]="clienteModificato.indirizzoSedeLegale.localita" name="localitalegale"
+        class="form-control" id="localitalegale">
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modificaCliente()">Modifica</button>
+  </div>
+</ng-template>

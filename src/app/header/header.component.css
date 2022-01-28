@@ -1,0 +1,9 @@
+nav img {
+    width: 40%;
+    /* margin-left: 200px; */
+}
+
+.nav-link {
+    padding: 10px 10px;
+    margin: 0px 10px;
+}

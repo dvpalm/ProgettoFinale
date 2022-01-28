@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
 export const environment = {
-  production: false
+  production: false,
+  base: "http://epicode.online/epicodebeservice_v2/",
+  clienti: "http://epicode.online/epicodebeservice_v2/api/clienti/",
+  fatture: "http://epicode.online/epicodebeservice_v2/api/fatture/",
+  statoFattura: "http://epicode.online/epicodebeservice_v2/api/statifattura?page=0&size=20&sort=id,ASC",
+  comuni: "http://epicode.online/epicodebeservice_v2/api/comuni/",
+  province: "http://epicode.online/epicodebeservice_v2/api/province/",
 };
 
 /*

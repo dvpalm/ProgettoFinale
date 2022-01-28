@@ -1,0 +1,28 @@
+.card,
+.si {
+    background-color: #b8d8d8;
+}
+
+.card-nome {
+    background-color: #FC2A68;
+}
+
+.card-cliente {
+    background-color: #906eee;
+}
+
+.modal-header {
+    border-bottom: 1px solid black;
+}
+
+.modal-footer {
+    border-top: 1px solid black;   
+}
+
+.modal-body,
+.modal-header,
+.modal-footer,
+.modalebreadcrumb {
+    background-color: #FFB74D;
+    color: white;
+}
