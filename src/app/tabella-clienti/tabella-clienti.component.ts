@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { faEye, faUserEdit, faUserTimes } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Clienti } from '../classes/clienti';
-import { User } from '../classes/user';
 import { ClientiService } from '../services/clienti.service';
 
 
