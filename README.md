@@ -4,8 +4,8 @@
 
 ## Features
 - Angular 13.1.4
-- APP CRUD
-- Display data from API REST
+- Customer and invoice management app
+- Create, read, update and delete data from API REST
 
 ## Installation
 
