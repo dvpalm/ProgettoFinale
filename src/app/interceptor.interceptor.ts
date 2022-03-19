@@ -13,7 +13,7 @@ export class InterceptorInterceptor implements HttpInterceptor {
 
   constructor() { }
 
-  bearToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NjEyNTgwNiwiZXhwIjoxNjQ2OTg5ODA2fQ.DlHJ1wpPLkDwBXzj8187Mgr6gTCHTzU34Xu_4aiQd47eGiqgdUzvsBe6n_XpPBAYzHmsgr_ayOI0xxY-HTEVng"
+  bearToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzY5NDI0OCwiZXhwIjoxNjQ4NTU4MjQ4fQ.knnjyWlS4wWrrVPni9Roj9Q4eW4U7QbVjwyHIAnVAQqMQMOxZ8z4uPtYa2szn3kE7WyWmjQ6xmPNMTp8E7QTWg"
   tenantID = "fe_0621"
 
 
